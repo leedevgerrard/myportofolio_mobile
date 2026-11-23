@@ -33,6 +33,12 @@ Aplikasi ini merupakan portofolio pribadi yang disajikan dalam format aplikasi m
 - Menambahkan informasi profil pemilik portfolio
 - Menambahkan menu aksi portfolio interaktif sederhana
 
+### Minggu 12 - Individual Assignment 8: Flutter Navigation, Layouts, Forms, and Input Elements
+- Menambahkan halaman formulir untuk project dan experience
+- Membuat navigasi dan drawer
+- Menerapkan validasi pada input formulir dan menampilkan hasilnya melalui dialog
+- Merapikan repositori proyek
+
 ## Setup & Instalasi
 
 ### Prerequisites
@@ -96,6 +102,13 @@ flutter run -d chrome
 5. BuildContext adalah objek pada Flutter yang menyimpan informasi mengenai posisi sebuah widget di dalam widget tree. BuildContext penting karena memungkinkan sebuah widget mengakses informasi dan resource dari widget-widget yang berada di atasnya, seperti mengakses tema aplikasi, ukuran layar, navigasi, dan konfigurasi lainnya. Setiap metode build menerima parameter 'BuildContext context' yang digunakan untuk mengakses informasi tersebut ketika membangun tampilan widget.
 6. Hot reload menerapkan perubahan kode ke aplikasi yang sedang berjalan tanpa menghilangkan state yang sedang tersimpan. Sedangkan hot restart menjalankan ulang aplikasi Flutter dari awal dengan memuat ulang kode dan menginisialisasi ulang state aplikasi. Kita perlu melakukan hot restart ketika melakukan perubahan yang memerlukan inisialisasi ulang state. Full restart diperlukan ketika perubahan melibatkan konfigurasi atau kode native yang membutuhkan proses build ulang.
 
+### Tugas 8
+
+1. Navigator.push() menambahkan suatu route ke bagian paling atas stack route sehingga route tersebut akan ditampilkan ke pengguna. Navigator.pushReplacement() mengganti route yang berada di tumpukan paling atas stack route (yang sedang ditampilkan ke pengguna) menjadi suatu route baru yang diberikan. Navigator.pushReplacement() mirip dengan Navigator.push(), hanya saja ia menghapus route paling atas terlebih dahulu sebelum menambahkan route yang baru. Navigator.pop() menghapus route yang berada di tumpukan paling atas stack route sehingga tampilan aplikasi berpindah ke route yang berada di bawahnya. Metode yang dipakai untuk membuka formulir dari kartu aksi adalah push(), yang berarti halaman formulir akan ditambahkan pada stack route sehingga aplikasi kemudian menampilkan halaman formulir. Sedangkan opsi Home pada Drawer menggunakan metode pushReplacement(), yang berarti ketika opsi ditekan, maka route teratas yang sedang ditampilkan akan dihapus dan digantikan dengan halaman homepage.
+2. Scaffold, AppBar, dan Drawer digunakan sebagai struktur pada setiap halaman agar tampilan pada setiap halaman seragam dan konsisten terlepas dari isi konten utama halaman tersebut. Scaffold, AppBar, dan Drawer diterapkan pada setiap halaman dan memiliki peran masing-masing. Scaffold merupakan kerangka utama halaman yang di dalamnya terdapat AppBar dan Drawer. AppBar merupakan bar pada bagian atas halaman yang berisi judul halaman dan tombol navigasi. Drawer merupakan panel navigasi yang berada di samping yang memungkinkan pengguna untuk berpindah dari halaman satu ke yang lainnya pada setiap halaman. Pengaturan warna tema portofolio dilakukan secara terpusat di main.dart menggunakan ThemeData pada MaterialApp. Pada proyek ini, warna utama yang dipakai adalah indigo dan warna sekundernya adalah amber. Tema utama tersebut kemudian akan diwariskan pada widget-widget turunannya sehingga banyak halaman dapat menggunakan tema yang sama dan konsisten tanpa perlu mendefinisikan tema pada masing-masing halaman.
+3. Tata letak yang digunakan untuk halaman formulir terdiri dari beberapa widget seperti Form, SingleChildScrollView, Column, dan Padding. Tujuannya adalah agar formulir terstruktur rapi dan mudah digunakan, bahkan ketika ruang layar terbatas. Peran widget pengatur jarak (Padding) adalah untuk memberikan jarak (ruang kosong) di sekitar widget input agar tampilan input tetap rapi. Peran widget penggulir (SingleChildScrollView) adalah agar tampilan form beserta seluruh isinya tetap dapat diakses dengan digulir (di-scroll) secara vertikal bila tinggi formulirnya melebihi tinggi layar dan keseluruhan tampilannya tidak bisa ditampilkan sepenuhnya sekaligus.
+4. Peran GlobalKey<FormState> adalah menjadi key yang digunakan sebagai penghubung agar kita dapat mengakses dan mengelola state widget Form dari luar widget tersebut. Dengan key tersebut, kita dapat mengakses fungsi-fungsi seperti validate(), reset(), dsb. Peran validator adalah untuk menentukan apakah input pengguna valid atau tidak berdasarkan aturan-aturan yang didefinisikan. Peran validate() saat tombol Simpan ditekan adalah menjalankan validator pada seluruh input pada form dan mengembalikan true jika seluruh input valid dan false jika terdapat setidaknya satu input yang tidak valid. Salah satu contoh nilai yang ditolak oleh validasi pada input Experience Title adalah input yang memiliki panjang 256 karakter. Pemilihan jenis input atau papan ketik hanya dilakukan agar memudahkan pengguna dalam mengisi formulir karena input dan papan ketik memiliki jenis yang sesuai dengan format input, namun validasi tetap diperlukan karena pemilihan jenis input dan papan ketik tidak mendefinisikan aturan validasi dan tidak menangani kasus-kasus yang ingin kita validasi.
+
 ## AI Disclosure
 
 Sejauh ini, AI yang berupa chatbot hanya saya gunakan untuk berdiskusi dan mempelajari Flutter serta pengembangan aplikasi mobile lebih dalam. AI chatbot (ChatGPT) saya gunakan untuk menanyakan hal-hal terkait properti CSS, best practices, troubleshooting, dan mempelajari suatu hal baru. AI sangat mungkin melakukan kekeliruan. Oleh karena itu, dalam penggunaannya, saya selalu mengevaluasi hasil jawaban AI dan saya tidak sepenuhnya terpaku pada AI, melainkan juga memadukannya dengan dokumentasi dan sumber lainnya.
@@ -112,3 +125,5 @@ Format:
 `id` / `index tugas/tutorial` - `deskripsi singkat` : `tautan ke chat`
 #### 001 / 7 - Penjelasan mengenai widget MaterialApp & BuildContext : [tautan ke chat](https://chatgpt.com/share/6afadd16-d6b8-83ec-b8fe-4a09b5b7689e)
 #### 002 / 7 - Perbedaan antara hot restart dan full restart : [tautan ke chat](https://chatgpt.com/share/6afadd5f-824c-83ec-a9e2-725d8550679e)
+#### 003 / 8 - Penjelasan objek tanggal dan tipe data future : [tautan ke chat](https://chatgpt.com/share/6b045c31-7154-83ec-b30a-4ae9089e0cba)
+#### 004 / 8 - Penjelasan GlobalKey form : [tautan ke chat](https://chatgpt.com/share/6b045c96-0280-83ec-9e12-b49f88ee7891)
